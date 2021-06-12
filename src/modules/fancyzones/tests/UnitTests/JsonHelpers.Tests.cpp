@@ -590,7 +590,7 @@ namespace FancyZonesUnitTests
 
                 TEST_METHOD (FromJsonInvalidTypes)
                 {
-                    json::JsonObject gridJson = json::JsonObject::Parse(L"{\"rows\": \"три\", \"columns\": \"четыре\"}");
+                    json::JsonObject gridJson = json::JsonObject::Parse(L"{\"rows\": \"??и\", \"columns\": \"?е???е\"}");
                     Assert::IsFalse(GridLayoutInfoJSON::FromJson(gridJson).has_value());
                 }
     };
@@ -703,7 +703,7 @@ namespace FancyZonesUnitTests
 
         TEST_METHOD (FromJsonInvalidTypes)
         {
-            json::JsonObject json = json::JsonObject::Parse(L"{\"uuid\": null, \"name\": \"имя\", \"type\": true}");
+            json::JsonObject json = json::JsonObject::Parse(L"{\"uuid\": null, \"name\": \"им?\", \"type\": true}");
             Assert::IsFalse(CustomZoneSetJSON::FromJson(json).has_value());
 
             json = json::JsonObject::Parse(L"{\"uuid\": \"uuid\", \"name\": \"name\", \"type\": \"unknown type\"}");
@@ -1758,7 +1758,7 @@ namespace FancyZonesUnitTests
                 data.SetSettingsModulePath(m_moduleName);
                 const auto& jsonPath = data.zonesSettingsFileName;
 
-                std::wofstream{ jsonPath.data(), std::ios::binary } << L"{ \"app-zone-history\": [], \"devices\": [{\"device-id\": \"кириллица\"}], \"custom-zone-sets\": []}";
+                std::wofstream{ jsonPath.data(), std::ios::binary } << L"{ \"app-zone-history\": [], \"devices\": [{\"device-id\": \"ки?илли?а\"}], \"custom-zone-sets\": []}";
                 data.LoadFancyZonesData();
 
                 Assert::IsTrue(data.GetCustomZoneSetsMap().empty());

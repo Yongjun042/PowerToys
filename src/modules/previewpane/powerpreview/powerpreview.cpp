@@ -44,6 +44,15 @@ PowerPreviewModule::PowerPreviewModule() :
         std::make_unique<RegistryWrapper>(),
         L".svg\\shellex\\{E357FCCD-A995-4576-B01F-234630154E96}"));
 
+    m_fileExplorerModules.emplace_back(std::make_unique<ThumbnailProviderSettings>(
+        true,
+        L"iso-thumbnail-toggle-setting",
+        GET_RESOURCE_STRING(IDS_SVG_THUMBNAIL_PROVIDER_SETTINGS_DESCRIPTION),
+        L"{F7063625-8A36-4F01-94BE-BC9E80D8CFA7}",
+        L"Iso Thumbnail Provider",
+        std::make_unique<RegistryWrapper>(),
+        L".iso\\shellex\\{ED900937-84E3-4CCF-8BAE-567EB04ABD76}"));
+
     // If the user is on the new settings interface, File Explorer might be disabled if they updated from old to new settings, so initialize the registry state in the constructor as PowerPreviewModule::enable/disable will not be called on startup
     if (UseNewSettings())
     {

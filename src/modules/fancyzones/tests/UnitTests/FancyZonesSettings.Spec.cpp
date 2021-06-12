@@ -387,7 +387,7 @@ namespace FancyZonesUnitTests
 
                 TEST_METHOD (CreateWithCyrillicSymbolsInJson)
                 {
-                    std::wofstream{ m_tmpName.data(), std::ios::binary } << L"{ \"version\": \"1.0\", \"name\": \"ФансиЗонс\"}";
+                    std::wofstream{ m_tmpName.data(), std::ios::binary } << L"{ \"version\": \"1.0\", \"name\": \"Фан?и?он?\"}";
                     auto actual = MakeFancyZonesSettings(m_hInst, m_moduleName, m_moduleKey);
                     Assert::IsTrue(actual != nullptr);
 
